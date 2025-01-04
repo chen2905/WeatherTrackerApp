@@ -1,0 +1,33 @@
+<div class="weather-container">
+  <h2>Weather Tracker</h2>
+  
+  <!-- City Input Form -->
+  <div class="input-container">
+    <label for="city">Enter City Name:</label>
+    <input 
+      type="text" 
+      id="city" 
+      [(ngModel)]="city" 
+      placeholder="e.g., London" 
+    />
+    <button (click)="getWeather()">Get Weather</button>
+  </div>
+
+  <!-- Weather Information Display -->
+  <div *ngIf="weatherData">
+    <h3>Weather for {{ city }}</h3>
+    <p><strong>Temperature:</strong> {{ weatherData.main.temp }}°C</p>
+    <p><strong>Humidity:</strong> {{ weatherData.main.humidity }}%</p>
+    <p><strong>Weather:</strong> {{ weatherData.weather[0].description }}</p>
+  </div>
+
+  <!-- Loading Message -->
+  <div *ngIf="isLoading" class="loading">
+    <p>Loading weather data...</p>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+</div>
