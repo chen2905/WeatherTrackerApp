@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AZURE_CONTAINER_REGISTRY_USERNAME }}/appsvc/staticsite:${{ github.sha }}
+        tags: mcr.microsoft.com/az204weathertrackeracr.azurecr.io/weathertrackerapp:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
