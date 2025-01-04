@@ -41,11 +41,15 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+    - name: Log in to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
     - name: Deploy to Azure Web App
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'WeatherTrackerApp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_84c6e67db2e445618b36a8f5490aaf2d }}
         images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_7ff9e984bb9c47b99b1d8b3a2482459f }}/appsvc/staticsite:${{ github.sha }}'
