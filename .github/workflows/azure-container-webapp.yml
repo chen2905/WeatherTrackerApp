@@ -27,7 +27,7 @@
 name: Build and deploy a container to an Azure Web App weather tracker
 
 env:
-  AZURE_WEBAPP_NAME: WeatherTrackerApp  # set this to the name of your Azure Web App
+  AZURE_WEBAPP_NAME: weathertrackerapp  # set this to the name of your Azure Web App
 
 on:
   push:
